@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/friendly.css">
+{% endblock %}
+
+{% block content %}
+  <h1>{{ topic | e }}. {{ title | e }}.</h1>
+  <hr>
+  {{ content }}
+{% endblock %}

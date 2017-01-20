@@ -9,8 +9,8 @@ from config import ARTICLES, ARTICLES_PATH, TEMPLATE_PATH, TOPICS_MAP, HTML_PATH
 
 def markdown_to_html(path):
     with open(path, 'r') as md_file:
-        data = md_file.read()
-    return markdown.markdown(data, extensions=['markdown.extensions.codehilite'])
+        md_data = md_file.read()
+    return markdown.markdown(md_data, extensions=['markdown.extensions.codehilite'])
 
 
 def render_html_from_template(template, data={}):

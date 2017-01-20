@@ -1,0 +1,5 @@
+for article in $(git diff --name-only --relative='articles')
+do
+  echo Updating $article
+  python generate_site.py --update $article
+done

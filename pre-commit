@@ -1,5 +1,2 @@
-for article in $(git diff --name-only --relative='articles')
-do
-  echo Updating $article
-  python generate_site.py --update $article
-done
+IFS=$'\n' articles=$(git diff --name-only --relative='articles')
+python generate_site.py --update-articles ${articles[*]}

@@ -36,8 +36,7 @@ def get_markdown_content(path):
         return md_file.read()
 
 
-def markdown_to_html(path):
-    md_data = get_markdown_content(path)
+def markdown_to_html(md_data):
     return markdown.markdown(md_data, safe_mode='escape', extensions=['markdown.extensions.codehilite'])
 
 
@@ -54,9 +53,10 @@ def save_html(html_data, path):
 
 
 def generate_article_page(article, topics_map):
-    article_content = markdown_to_html(os.path.join(ARTICLES_PATH, article['source']))
+    article_md_content = get_markdown_content(os.path.join(ARTICLES_PATH, article['source']))
+    article_html_content = markdown_to_html(article_md_content)
     article_html = render_html_from_template('article.html', {
-        'content': article_content,
+        'content': article_html_content,
         'title': article['title'],
         'topic': topics_map[article['topic']]
     })
